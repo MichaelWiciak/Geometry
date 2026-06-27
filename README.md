@@ -1,5 +1,9 @@
 # Geometry
 
+<div align="center">
+  <img width="500" alt="image" src="images/image.png">
+</div>
+
 A Java Swing desktop application for interactive 2D geometry transformation. It build shapes, apply affine transforms (scale, shear, rotation), and export the results.
 
 Draw simple shapes (rectangles, triangles) and transform them visually using a 2×2 transformation matrix. Each shape is defined by connected line segments, and all transformations are computed from scratch.

@@ -6,20 +6,19 @@ public class HTMLExportStrategy implements DrawingExportStrategy {
 
         str.append("<h1>Transform Matrix</h1>\n");
         str.append("<p>Entries: ");
-        final double[] tmp = drawing.transform.getMatrix();
+        final double[] tmp = drawing.getTransform().getMatrix();
         for (int i = 0; i < 3; ++i)
             str.append(tmp[i] + ", ");
         str.append(tmp[3] + "</p>\n");
 
-        for (Shape s : drawing.shapes) {
+        for (Shape s : drawing.getShapes()) {
             str.append("<h2>Shape</h2>\n");
             str.append("<ul>\n");
-            for (int i = 0; i < s.lines.size(); ++i) {
-                Line line = s.lines.get(i);
-                str.append("<li>Start: (" + line.p1.x + ", " + line.p1.y + "), End: (" + line.p2.x + ", " + line.p2.y + ")</li>\n");
+            for (Line line : s.getLines()) {
+                str.append("<li>Start: (" + line.getP1().getX() + ", " + line.getP1().getY() + "), End: (" + line.getP2().getX() + ", " + line.getP2().getY() + ")</li>\n");
             }
             str.append("</ul>\n");
-            str.append("<p>Color: " + s.color + "</p>\n");
+            str.append("<p>Color: " + s.getColorHex() + "</p>\n");
         }
 
         str.append("</body>\n</html>\n");

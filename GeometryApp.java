@@ -57,11 +57,11 @@ public class GeometryApp {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        JSpinner scale_x = makeDoublSpinner(1.0, 10.0, 0.0, 0.1);
-        JSpinner scale_y = makeDoublSpinner(1.0, 10.0, 0.0, 0.1);
-        JSpinner shear_x = makeDoublSpinner(0.0, 10.0, -10.0, 0.1);
-        JSpinner shear_y = makeDoublSpinner(0.0, 10.0, -10.0, 0.1);
-        JSpinner rotate = makeDoublSpinner(0.0, 180.0, -180.0, 1.0);
+        JSpinner scale_x = makeDoubleSpinner(1.0, 10.0, 0.0, 0.1);
+        JSpinner scale_y = makeDoubleSpinner(1.0, 10.0, 0.0, 0.1);
+        JSpinner shear_x = makeDoubleSpinner(0.0, 10.0, -10.0, 0.1);
+        JSpinner shear_y = makeDoubleSpinner(0.0, 10.0, -10.0, 0.1);
+        JSpinner rotate = makeDoubleSpinner(0.0, 180.0, -180.0, 1.0);
         JButton view = new JButton("View result");
         JButton reset = new JButton("Reset");
         JButton text = new JButton("To text");
@@ -105,12 +105,12 @@ public class GeometryApp {
 
     /**
      * make a floating point spin box
-     * @param init_value (double): initial value of spinnor
+     * @param init_value (double): initial value of spinner
      * @param maximum (double): maximum value of spinnor
      * @param minimum (double): minimum value of spinnor
      * @return JSpinner
      */
-    static JSpinner makeDoublSpinner(final double init_value, final double maximum, final double minimum, final double step_size){
+    static JSpinner makeDoubleSpinner(final double init_value, final double maximum, final double minimum, final double step_size){
         Double value = Double.valueOf(init_value);
         Double min = Double.valueOf(minimum);
         Double max = Double.valueOf(maximum);

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class Shape {
 
     // lines forming shape
-    ArrayList<Line> lines;
+    private ArrayList<Line> lines;
 
     // display colour
-    Color color;
+    private Color color = Color.BLACK;
 
     /**
      * constructor provides an empty shape
@@ -55,10 +55,19 @@ public class Shape {
             Point p2 = matrix.apply(pts[1]);
 
             // draw line between transformed points
-            context.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+            context.drawLine(p1.getIntX(), p1.getIntY(), p2.getIntX(), p2.getIntY());
         }
 
         // restore old drawing colour
         context.setColor(prev);
+    }
+
+    public ArrayList<Line> getLines() { return lines; }
+    public Color getColor() { return color; }
+
+    public String getColorHex() {
+        if (color == null) return "#000000";
+        int rgb = color.getRGB();
+        return String.format("#%02x%02x%02x", (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
     }
 }

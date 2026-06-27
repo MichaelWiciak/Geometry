@@ -37,7 +37,7 @@ public class GeometryView extends JPanel {
 
         // iterate shapes in parent application
         TransformMatrix matrix = app.getDrawing().copyOfMatrix();
-        for(Shape shp: app.getDrawing().shapes){
+        for(Shape shp: app.getDrawing().getShapes()){
             shp.draw(g2d, matrix);
         }
     }

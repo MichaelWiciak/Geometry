@@ -4,7 +4,7 @@
 public class Point {
 
     // coordinates
-    double x, y;
+    private double x, y;
 
     /**
      * constructor
@@ -18,18 +18,34 @@ public class Point {
     }
 
     /**
-     * getter for nearest integer
+     * getter for the x-coordinate
+     * @return double
+     */
+    public double getX(){
+        return this.x;
+    }
+
+    /**
+     * getter for the y-coordinate
+     * @return double
+     */
+    public double getY(){
+        return this.y;
+    }
+
+    /**
+     * getter for nearest integer of x-coordinate
      * @return int
      */
-    public int getX(){
+    public int getIntX(){
         return (int) Math.round(this.x);
     }
 
     /**
-     * getter for nearest integer
+     * getter for nearest integer of y-coordinate
      * @return int
      */
-    public int getY(){
+    public int getIntY(){
         return (int) Math.round(this.y);
     }
 

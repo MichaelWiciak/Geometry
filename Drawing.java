@@ -2,10 +2,10 @@ import java.util.Vector;
 
 public class Drawing {
     // current transform
-    protected TransformMatrix transform;
+    private TransformMatrix transform;
 
     // array of shapes to be drawn
-    public Vector<Shape> shapes;
+    private Vector<Shape> shapes;
 
     private DrawingExportStrategy exportStrategy;
 
@@ -56,4 +56,7 @@ public class Drawing {
         
         return exportStrategy.export(this);
     }
+
+    public Vector<Shape> getShapes() { return shapes; }
+    public TransformMatrix getTransform() { return transform; }
 }

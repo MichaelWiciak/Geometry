@@ -4,10 +4,10 @@
 public class Line {
 
     // end points of line segment
-    final Point p1, p2;
+    private final Point p1, p2;
 
     /**
-     * constructor, it is up to the user to ensure that the two points are differrnt.
+     * constructor, it is up to the user to ensure that the two points are different.
      * @param p1 (Point): first defining point
      * @param p2 (Point): second defining point
      */
@@ -27,4 +27,7 @@ public class Line {
 
         return points;
     }
+
+    public Point getP1() { return p1; }
+    public Point getP2() { return p2; }
 }

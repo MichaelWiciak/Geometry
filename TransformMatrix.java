@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class TransformMatrix {
 
     // the raw matrix
-    public double matrix[];
+    private double matrix[];
 
     /**
      * default constructor produces identity matrix
@@ -99,8 +99,8 @@ public class TransformMatrix {
      * @return Point: transformed version of input.
      */
     public Point apply(final Point point){
-        final double x = this.matrix[0]*point.x + this.matrix[1]*point.y;
-        final double y = this.matrix[2]*point.x + this.matrix[3]*point.y;
+        final double x = this.matrix[0]*point.getX() + this.matrix[1]*point.getY();
+        final double y = this.matrix[2]*point.getX() + this.matrix[3]*point.getY();
 
         return new Point(x, y);
     }

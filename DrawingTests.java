@@ -38,10 +38,10 @@ public class DrawingTests {
         tomlBuild.append("entries = [1.0, 0.0, 0.0, 1.0]\n\n");
         tomlBuild.append("[Shape]\n");
         tomlBuild.append("lines=[{start=[240.0,100.0],end=[340.0,100.0]},{start=[340.0,100.0],end=[340.0,200.0]},{start=[340.0,200.0],end=[240.0,200.0]},{start=[240.0,200.0],end=[240.0,100.0]}]\n");
-        tomlBuild.append("color = null\n\n");
+        tomlBuild.append("color = #000000\n\n");
         tomlBuild.append("[Shape]\n");
         tomlBuild.append("lines=[{start=[100.0,100.0],end=[200.0,200.0]},{start=[200.0,200.0],end=[100.0,200.0]},{start=[100.0,200.0],end=[100.0,100.0]}]\n");
-        tomlBuild.append("color = java.awt.Color[r=255,g=0,b=0]\n\n");
+        tomlBuild.append("color = #ff0000\n\n");
         tomlTarget = tomlBuild.toString();
 
         // Prepare expected HTML output
@@ -56,27 +56,27 @@ public class DrawingTests {
         htmlBuild.append("<li>Start: (340.0, 200.0), End: (240.0, 200.0)</li>\n");
         htmlBuild.append("<li>Start: (240.0, 200.0), End: (240.0, 100.0)</li>\n");
         htmlBuild.append("</ul>\n");
-        htmlBuild.append("<p>Color: null</p>\n");
+        htmlBuild.append("<p>Color: #000000</p>\n");
         htmlBuild.append("<h2>Shape</h2>\n");
         htmlBuild.append("<ul>\n");
         htmlBuild.append("<li>Start: (100.0, 100.0), End: (200.0, 200.0)</li>\n");
         htmlBuild.append("<li>Start: (200.0, 200.0), End: (100.0, 200.0)</li>\n");
         htmlBuild.append("<li>Start: (100.0, 200.0), End: (100.0, 100.0)</li>\n");
         htmlBuild.append("</ul>\n");
-        htmlBuild.append("<p>Color: java.awt.Color[r=255,g=0,b=0]</p>\n");
+        htmlBuild.append("<p>Color: #ff0000</p>\n");
         htmlBuild.append("</body>\n</html>\n");
         htmlTarget = htmlBuild.toString();
 
         // Prepare expected SVG output
         StringBuilder svgBuild = new StringBuilder();
         svgBuild.append("<svg xmlns=\"http://www.w3.org/2000/svg\">\n");
-        svgBuild.append("<line x1=\"240.0\" y1=\"100.0\" x2=\"340.0\" y2=\"100.0\" stroke=\"null\" />\n");
-        svgBuild.append("<line x1=\"340.0\" y1=\"100.0\" x2=\"340.0\" y2=\"200.0\" stroke=\"null\" />\n");
-        svgBuild.append("<line x1=\"340.0\" y1=\"200.0\" x2=\"240.0\" y2=\"200.0\" stroke=\"null\" />\n");
-        svgBuild.append("<line x1=\"240.0\" y1=\"200.0\" x2=\"240.0\" y2=\"100.0\" stroke=\"null\" />\n");
-        svgBuild.append("<line x1=\"100.0\" y1=\"100.0\" x2=\"200.0\" y2=\"200.0\" stroke=\"java.awt.Color[r=255,g=0,b=0]\" />\n");
-        svgBuild.append("<line x1=\"200.0\" y1=\"200.0\" x2=\"100.0\" y2=\"200.0\" stroke=\"java.awt.Color[r=255,g=0,b=0]\" />\n");
-        svgBuild.append("<line x1=\"100.0\" y1=\"200.0\" x2=\"100.0\" y2=\"100.0\" stroke=\"java.awt.Color[r=255,g=0,b=0]\" />\n");
+        svgBuild.append("<line x1=\"240.0\" y1=\"100.0\" x2=\"340.0\" y2=\"100.0\" stroke=\"#000000\" />\n");
+        svgBuild.append("<line x1=\"340.0\" y1=\"100.0\" x2=\"340.0\" y2=\"200.0\" stroke=\"#000000\" />\n");
+        svgBuild.append("<line x1=\"340.0\" y1=\"200.0\" x2=\"240.0\" y2=\"200.0\" stroke=\"#000000\" />\n");
+        svgBuild.append("<line x1=\"240.0\" y1=\"200.0\" x2=\"240.0\" y2=\"100.0\" stroke=\"#000000\" />\n");
+        svgBuild.append("<line x1=\"100.0\" y1=\"100.0\" x2=\"200.0\" y2=\"200.0\" stroke=\"#ff0000\" />\n");
+        svgBuild.append("<line x1=\"200.0\" y1=\"200.0\" x2=\"100.0\" y2=\"200.0\" stroke=\"#ff0000\" />\n");
+        svgBuild.append("<line x1=\"100.0\" y1=\"200.0\" x2=\"100.0\" y2=\"100.0\" stroke=\"#ff0000\" />\n");
         svgBuild.append("</svg>\n");
         svgTarget = svgBuild.toString();
     }

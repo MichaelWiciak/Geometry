@@ -6,33 +6,34 @@ public class TOMLExportStrategy implements DrawingExportStrategy {
 
         str.append("[TransformMatrix]\n");
         str.append("entries = [");
-        final double[] tmp = drawing.transform.getMatrix();
+        final double[] tmp = drawing.getTransform().getMatrix();
         for (int i = 0; i < 3; ++i)
             str.append(tmp[i] + ", ");
         str.append(tmp[3] + "]\n\n");
 
-        for (Shape s : drawing.shapes) {
+        for (Shape s : drawing.getShapes()) {
             str.append("[Shape]\n");
             str.append("lines=[");
-            for (int i = 0; i < s.lines.size(); ++i) {
-                Line line = s.lines.get(i);
+            java.util.List<Line> lines = s.getLines();
+            for (int i = 0; i < lines.size(); ++i) {
+                Line line = lines.get(i);
                 str.append("{");
                 str.append("start=[");
-                str.append(line.p1.x + "," + line.p1.y);
+                str.append(line.getP1().getX() + "," + line.getP1().getY());
                 str.append("],");
 
                 str.append("end=[");
-                str.append(line.p2.x + "," + line.p2.y);
+                str.append(line.getP2().getX() + "," + line.getP2().getY());
                 str.append("]");
 
-                if (i != s.lines.size() - 1) {
+                if (i != lines.size() - 1) {
                     str.append("},");
                 } else {
                     str.append("}");
                 }
             }
             str.append("]\n");
-            str.append("color = " + s.color + "\n\n");
+            str.append("color = " + s.getColorHex() + "\n\n");
         }
         return str.toString();
     }

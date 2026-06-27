@@ -23,7 +23,11 @@
 hs_err_pid*
 replay_pid*
 
+# Node.js (not used by this Java project)
+node_modules/
 
-node_modules/*/
+# Compiled output
+target/
 
-
+# macOS
+.DS_Store

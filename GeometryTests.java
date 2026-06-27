@@ -45,7 +45,7 @@ public class GeometryTests {
     public void testIdentity(){
         double id[] = {1.0, 0.0, 0.0, 1.0};
 
-        assertArrayEquals(id, id_matrix.matrix, GeometryTests.LOCAL_ZERO);
+        assertArrayEquals(id, id_matrix.getMatrix(), GeometryTests.LOCAL_ZERO);
     }
 
     /**
@@ -54,8 +54,8 @@ public class GeometryTests {
     @Test
     public void testApply0(){
         Point same = id_matrix.apply(unit);
-        assertEquals(1.0, same.x, GeometryTests.LOCAL_ZERO);
-        assertEquals(1.0, same.y, GeometryTests.LOCAL_ZERO);
+        assertEquals(1.0, same.getX(), GeometryTests.LOCAL_ZERO);
+        assertEquals(1.0, same.getY(), GeometryTests.LOCAL_ZERO);
     }
 
     /**
@@ -63,10 +63,10 @@ public class GeometryTests {
      */
     @Test
     public void testApply1(){
-        id_matrix.matrix[0] = 2.0;
-        Point same = id_matrix.apply(unit);
-        assertEquals(2.0, same.x, GeometryTests.LOCAL_ZERO);
-        assertEquals(1.0, same.y, GeometryTests.LOCAL_ZERO);
+        TransformMatrix scaled = new TransformMatrix(2.0, 0.0, 0.0, 1.0);
+        Point same = scaled.apply(unit);
+        assertEquals(2.0, same.getX(), GeometryTests.LOCAL_ZERO);
+        assertEquals(1.0, same.getY(), GeometryTests.LOCAL_ZERO);
     }
 
     /**
@@ -82,7 +82,7 @@ public class GeometryTests {
         tmp.updateMatrix(1.0, 1.0, 0.0, 0.0, theta);
         final double[] shouldBe = {cosTheta, -sinTheta, sinTheta, cosTheta};
 
-        assertArrayEquals(tmp.matrix, shouldBe, GeometryTests.LOCAL_ZERO);
+        assertArrayEquals(tmp.getMatrix(), shouldBe, GeometryTests.LOCAL_ZERO);
     }
 
     /**
@@ -100,7 +100,7 @@ public class GeometryTests {
         tmp.updateMatrix(scale_x, scale_y, shear_x, shear_y, rotation);
         final double[] shouldBe = {scale_x, 0.3, -0.45, scale_y};
 
-        assertArrayEquals(shouldBe, tmp.matrix, GeometryTests.LOCAL_ZERO);
+        assertArrayEquals(shouldBe, tmp.getMatrix(), GeometryTests.LOCAL_ZERO);
     }
 
     /**
@@ -118,7 +118,7 @@ public class GeometryTests {
         tmp.updateMatrix(scale_x, scale_y, shear_x, shear_y, rotation);
         final double[] shouldBe = {1.799038105676658, 0.11602540378443882, 0.49999999999999994, 0.8660254037844387};
 
-        assertArrayEquals(shouldBe, tmp.matrix, GeometryTests.LOCAL_ZERO);
+        assertArrayEquals(shouldBe, tmp.getMatrix(), GeometryTests.LOCAL_ZERO);
     }
 
     /**

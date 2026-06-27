@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache JUnit jar
+        uses: actions/cache@v4
+        id: cache-junit
+        with:
+          path: junit-platform-console-standalone-1.9.3.jar
+          key: junit-1.9.3
+
+      - name: Download JUnit
+        if: steps.cache-junit.outputs.cache-hit != 'true'
+        run: |
+          curl -sL -o junit-platform-console-standalone-1.9.3.jar \
+            "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar"
+
+      - name: Compile
+        run: javac -cp junit-platform-console-standalone-1.9.3.jar *.java -d target
+
+      - name: Run GeometryTests
+        run: java -jar junit-platform-console-standalone-1.9.3.jar --class-path target --select-class GeometryTests
+
+      - name: Run DrawingTests
+        run: java -jar junit-platform-console-standalone-1.9.3.jar --class-path target --select-class DrawingTests
